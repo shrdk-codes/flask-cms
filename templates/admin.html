@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Khadka CMS</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+
+</head>
+
+<body>
+
+<div class="cms-container">
+
+<aside id="sidebar">
+  <div class="sidebar-top">
+    <button class="nav-toggle" onclick="toggleSidebar()">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="logo-text">KHADKA CMS</div>
+  </div>
+
+  <nav>
+    <a href="#hero" class="active"><i data-lucide="layout"></i><span>Hero</span></a>
+    <a href="#about"><i data-lucide="user"></i><span>Biography</span></a>
+    <a href="#projects"><i data-lucide="briefcase"></i><span>Projects</span></a>
+    <a href="#testimonials"><i data-lucide="quote"></i><span>Testimonials</span></a>
+    <a href="#contact"><i data-lucide="mail"></i><span>Contact</span></a>
+  </nav>
+
+  <a href="/logout" class="btn-logout">
+    <i data-lucide="log-out"></i>
+    <span>Logout</span>
+  </a>
+</aside>
+
+<main>
+<div class="content-wrapper">
+
+<section id="hero">
+  <h2>Hero</h2>
+  <form method="POST">
+    <input type="hidden" name="type" value="hero">
+    <div class="form-group"><input name="title" placeholder="Headline"></div>
+    <div class="form-group"><textarea name="subtitle" placeholder="Subtitle"></textarea></div>
+    <button>Update Hero</button>
+  </form>
+</section>
+
+<section id="about">
+  <h2>Biography</h2>
+  <form method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="type" value="about">
+    <div class="form-group"><textarea name="content" placeholder="Biography content"></textarea></div>
+    <div class="form-group"><input type="file" name="image"></div>
+    <button>Save Biography</button>
+  </form>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <form method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="type" value="project">
+    <div class="form-group"><input name="title" placeholder="Project Title"></div>
+    <div class="form-group"><textarea name="desc" placeholder="Project Description"></textarea></div>
+    <div class="form-group"><input type="file" name="image"></div>
+    <button>Add Project</button>
+  </form>
+</section>
+
+<section id="testimonials">
+  <h2>Testimonials</h2>
+  <form method="POST">
+    <input type="hidden" name="type" value="testimonial">
+    <div class="form-group"><input name="name" placeholder="Client Name"></div>
+    <div class="form-group"><textarea name="message" placeholder="Feedback"></textarea></div>
+    <button>Add Testimonial</button>
+  </form>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <form method="POST">
+    <input type="hidden" name="type" value="contact">
+    <div class="form-group"><input name="email" placeholder="Email"></div>
+    <div class="form-group"><input name="phone" placeholder="Phone"></div>
+    <div class="form-group"><input name="location" placeholder="Location"></div>
+    <button>Update Contact</button>
+  </form>
+</section>
+
+</div>
+</main>
+
+</div>
+
+<script>
+lucide.createIcons();
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('collapsed');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Portfolio</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav>
+  <h3>My Portfolio</h3>
+  <a href="/login">Admin</a>
+</nav>
+
+<!-- ABOUT -->
+<section>
+<h2>About Me</h2>
+<div class="about">
+  {% if about and about.image %}
+  <img src="{{ url_for('static', filename='uploads/' + about.image) }}">
+  {% endif %}
+  <p>{{ about.content if about else 'Update from admin panel' }}</p>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section>
+<h2>Projects</h2>
+<div class="projects">
+{% for p in projects %}
+  <div class="project">
+    {% if p.image %}
+    <img src="{{ url_for('static', filename='uploads/' + p.image) }}">
+    {% endif %}
+    <h4>{{ p.title }}</h4>
+    <p>{{ p.desc }}</p>
+  </div>
+{% endfor %}
+</div>
+</section>
+
+<!-- SKILLS -->
+<section>
+<h2>Skills</h2>
+<div class="skills">
+{% for s in skills %}
+  <span>{{ s.name }}</span>
+{% endfor %}
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+<h2>Testimonials</h2>
+{% for t in testimonials %}
+<p>“{{ t.message }}” — <strong>{{ t.name }}</strong></p>
+{% endfor %}
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact</h2>
+<p>Email: {{ contact.email if contact }}</p>
+<p>Phone: {{ contact.phone if contact }}</p>
+<p>Location: {{ contact.location if contact }}</p>
+</section>
+
+<footer>© 2026 My Portfolio</footer>
+
+<script>
+// JS placeholder (for animations later)
+console.log("Portfolio loaded");
+</script>
+
+</body>
+</html>
